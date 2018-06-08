@@ -16,7 +16,7 @@ android {
         }
         ndk {
             ldLibs "log"//实现__android_log_print
-            abiFilters  "armeabi-v7a"
+            abiFilters "armeabi-v7a"
         }
     }
     buildTypes {

@@ -8,6 +8,7 @@ import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ruanchao.ffmpegdemo.utils.FFmpegCommands;
 import com.ruanchao.ffmpegdemo.utils.FFmpegUtil;
 import com.ruanchao.ffmpegdemo.utils.FileUtils;
 import com.ruanchao.ffmpegdemo.utils.MediaHelper;
@@ -111,5 +113,36 @@ public class MainActivity extends Activity implements View.OnClickListener {
             intent.putExtra("path",path);
             startActivity(intent);
         }
+    }
+
+    /**
+     * 提取音频
+     */
+    public void extractAudio(String videoUrl, String outUrl, FFmpegUtil.FFmpegRunListener listener){
+        String[] commands = FFmpegCommands.extractAudio(videoUrl, outUrl);
+        FFmpegUtil.execute(commands, listener);
+    }
+    /**
+     * 提取视频
+     */
+    public void extractVideo(String videoUrl, String outUrl, FFmpegUtil.FFmpegRunListener listener){
+
+    }
+
+    /**
+     * 处理背景音乐
+     */
+    private void composeVideoMusic(final String audioUrl,String audioOrMusicUrl, int mMusicVol, String musicOutUrl, FFmpegUtil.FFmpegRunListener listener) {
+        final String[] common = FFmpegCommands.changeAudioOrMusicVol(audioOrMusicUrl, mMusicVol , musicOutUrl);
+        FFmpegUtil.execute(common, listener);
+    }
+
+    /**
+     * 合成音视频
+     */
+    public void composeAudioAndMusic(String audioUrl, String musicUrl, String musicAudioPath, FFmpegUtil.FFmpegRunListener listener) {
+        String[] common = FFmpegCommands.composeAudio(audioUrl, musicUrl, musicAudioPath);
+        FFmpegUtil.execute(common, listener);
+
     }
 }

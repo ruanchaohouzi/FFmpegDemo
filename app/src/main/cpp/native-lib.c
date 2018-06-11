@@ -23,3 +23,10 @@ Java_com_ruanchao_ffmpegdemo_utils_FFmpegUtil_getFFmpegConfig(JNIEnv *env, jobje
     sprintf(info, "%s\n", avcodec_configuration());
     return (*env)->NewStringUTF(env,info);
 }
+
+JNIEXPORT jint JNICALL
+Java_com_ruanchao_ffmpegdemo_utils_FFmpegUtil_test(JNIEnv *env, jobject instance) {
+
+    return 21321;
+
+}

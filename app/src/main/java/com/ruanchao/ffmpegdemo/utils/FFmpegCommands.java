@@ -198,4 +198,29 @@ public class FFmpegCommands {
         }
         return commands;
     }
+
+    public static String[] composeGif(String _filePath, String _outPath) {//-f concat -i list.txt -c copy concat.mp4
+        Log.w("SLog","_filePath:" + _filePath + "\n_outPath:" + _outPath);
+        ArrayList<String> _commands = new ArrayList<>();
+        _commands.add("ffmpeg");
+        _commands.add("-ss");
+        _commands.add("0");
+        _commands.add("-t");
+        _commands.add("5");
+        _commands.add("-i");
+        _commands.add(_filePath);
+        _commands.add("-s");
+        _commands.add("320*240");
+        _commands.add("-f");
+        _commands.add("gif");
+        _commands.add("-r");
+        _commands.add("15");
+        _commands.add(_outPath);
+        String[] commands = new String[_commands.size()];
+        for (int i = 0; i < _commands.size(); i++) {
+            commands[i] = _commands.get(i);
+        }
+        return commands;
+    }
+
 }

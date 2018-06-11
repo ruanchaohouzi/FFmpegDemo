@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ruanchao.ffmpegdemo.utils.FFmpegCommands;
 import com.ruanchao.ffmpegdemo.utils.FFmpegUtil;
@@ -109,9 +110,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
             mStart.setImageResource(R.mipmap.bt_start);
             mMediaHelper.stopRecordSave();
             String path = mMediaHelper.getTargetFilePath();
-            Intent intent = new Intent(this,SynActivity.class);
-            intent.putExtra("path",path);
-            startActivity(intent);
+            String outPath =  mFileUtils.getMediaVideoPath() + "/out.mp4";
+            Log.i("test", "test:" + FFmpegUtil.test());
+            FFmpegUtil.execute(FFmpegCommands.extractVideo(path, outPath), new FFmpegUtil.FFmpegRunListener() {
+                @Override
+                public void onStart() {
+
+                }
+
+                @Override
+                public void onEnd(int result) {
+
+                    Toast.makeText(MainActivity.this,"end", Toast.LENGTH_LONG).show();
+                }
+            });
         }
     }
 

@@ -23,6 +23,8 @@ public class FFmpegUtil {
 
     public static native int ffmpegRun(String[] cmd);
 
+    public static native int test();
+
     /**
      * 获取ffmpeg编译信息
      * @return

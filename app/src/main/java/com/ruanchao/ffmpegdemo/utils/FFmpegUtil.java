@@ -1,6 +1,7 @@
 package com.ruanchao.ffmpegdemo.utils;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 /**
  * Created by ruanchao on 2018/6/6.
@@ -36,15 +37,15 @@ public class FFmpegUtil {
      * @param cmd
      * @return
      */
-    public  int jxFFmpegCMDRun(String cmd){
+    public static  int fFmpegCMDRun(String cmd){
         String regulation="[ \\t]+";
         final String[] split = cmd.split(regulation);
 
         return ffmpegRun(split);
     }
 
-    public static void execute(String[] commands, final FFmpegRunListener fFmpegRunListener) {
-        new AsyncTask<String[], Integer, Integer>() {
+    public static void execute(String commands, final FFmpegRunListener fFmpegRunListener) {
+        new AsyncTask<String, Integer, Integer>() {
             @Override
             protected void onPreExecute() {
                 if (fFmpegRunListener != null) {
@@ -53,8 +54,9 @@ public class FFmpegUtil {
             }
 
             @Override
-            protected Integer doInBackground(String[]... params) {
-                return ffmpegRun(params[0]);
+            protected Integer doInBackground(String... params) {
+                Log.i("FFmpegUtil",params[0]);
+                return fFmpegCMDRun(params[0]);
             }
 
             @Override

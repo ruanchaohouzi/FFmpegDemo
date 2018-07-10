@@ -110,20 +110,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
             mStart.setImageResource(R.mipmap.bt_start);
             mMediaHelper.stopRecordSave();
             String path = mMediaHelper.getTargetFilePath();
-            String outPath =  mFileUtils.getMediaVideoPath() + "/out.mp4";
+            String outPath =  mFileUtils.getMediaVideoPath() + "/out.ts";
             Log.i("test", "test:" + FFmpegUtil.test());
-            FFmpegUtil.execute(FFmpegCommands.extractVideo(path, outPath), new FFmpegUtil.FFmpegRunListener() {
-                @Override
-                public void onStart() {
-
-                }
-
-                @Override
-                public void onEnd(int result) {
-
-                    Toast.makeText(MainActivity.this,"end", Toast.LENGTH_LONG).show();
-                }
-            });
+//            FFmpegUtil.execute(FFmpegCommands.composeGif(path, outPath), new FFmpegUtil.FFmpegRunListener() {
+//                @Override
+//                public void onStart() {
+//
+//                }
+//
+//                @Override
+//                public void onEnd(int result) {
+//
+//                    Toast.makeText(MainActivity.this,"end", Toast.LENGTH_LONG).show();
+//                }
+//            });
         }
     }
 
@@ -132,7 +132,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
      */
     public void extractAudio(String videoUrl, String outUrl, FFmpegUtil.FFmpegRunListener listener){
         String[] commands = FFmpegCommands.extractAudio(videoUrl, outUrl);
-        FFmpegUtil.execute(commands, listener);
+        //FFmpegUtil.execute(commands, listener);
     }
     /**
      * 提取视频
@@ -146,7 +146,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
      */
     private void composeVideoMusic(final String audioUrl,String audioOrMusicUrl, int mMusicVol, String musicOutUrl, FFmpegUtil.FFmpegRunListener listener) {
         final String[] common = FFmpegCommands.changeAudioOrMusicVol(audioOrMusicUrl, mMusicVol , musicOutUrl);
-        FFmpegUtil.execute(common, listener);
+        //FFmpegUtil.execute(common, listener);
     }
 
     /**
@@ -154,7 +154,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
      */
     public void composeAudioAndMusic(String audioUrl, String musicUrl, String musicAudioPath, FFmpegUtil.FFmpegRunListener listener) {
         String[] common = FFmpegCommands.composeAudio(audioUrl, musicUrl, musicAudioPath);
-        FFmpegUtil.execute(common, listener);
+        //FFmpegUtil.execute(common, listener);
 
     }
 }

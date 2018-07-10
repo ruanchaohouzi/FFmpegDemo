@@ -1,0 +1,15 @@
+Executable : /Users/ruanchao/Library/Android/sdk/cmake/3.6.4111459/bin/cmake
+arguments : 
+-H/Users/ruanchao/Documents/workspace/FFmpegDemo/SmallVideoLib2
+-B/Users/ruanchao/Documents/workspace/FFmpegDemo/SmallVideoLib2/.externalNativeBuild/cmake/debug/armeabi-v7a
+-DANDROID_ABI=armeabi-v7a
+-DANDROID_PLATFORM=android-14
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/ruanchao/Documents/workspace/FFmpegDemo/SmallVideoLib2/build/intermediates/cmake/debug/obj/armeabi-v7a
+-DCMAKE_BUILD_TYPE=Debug
+-DANDROID_NDK=/Users/ruanchao/Library/Android/sdk/ndk-bundle
+-DCMAKE_CXX_FLAGS=-std=c++11
+-DCMAKE_TOOLCHAIN_FILE=/Users/ruanchao/Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=/Users/ruanchao/Library/Android/sdk/cmake/3.6.4111459/bin/ninja
+-GAndroid Gradle - Ninja
+jvmArgs : 
+
